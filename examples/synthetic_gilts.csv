@@ -1,0 +1,4 @@
+gilt_name,isin,redemption_date,nominal_outstanding_millions,gilt_type
+Illustrative Treasury 2027,TEST00000001,31/03/2027,1000,conventional
+Illustrative Treasury 2028,TEST00000002,01/04/2027,2000,conventional
+Illustrative Index-linked 2031,TEST00000003,22/11/2031,500,index-linked
