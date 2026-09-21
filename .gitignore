@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local DMO exports and generated outputs
+outputs/
+data/raw/
