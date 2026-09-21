@@ -16,8 +16,8 @@ The DMO [Gilts in Issue page](https://www.dmo.gov.uk/data/gilt-market/gilts-in-i
 
 Requires Python 3.10+ and only the standard library.
 
-1. Visit the DMO [Gilts in Issue report](https://www.dmo.gov.uk/data/datareport?reportCode=D1A), select a reporting date, export the table as CSV, and save it locally. Review the [DMO terms](https://www.dmo.gov.uk/terms-of-use/) before redistribution.
-2. Check the CSV headers. The importer accepts common DMO headings or a normalized file with `gilt_name,redemption_date,nominal_outstanding_millions` and optionally `isin,gilt_type`.
+1. Visit the DMO [Gilts in Issue report](https://www.dmo.gov.uk/data/pdfdatareport?reportCode=D1A), select a reporting date and obtain its table. If downloaded as Excel, convert the needed columns into a UTF-8 CSV locally. Review the [DMO terms](https://www.dmo.gov.uk/terms-of-use/) before redistribution.
+2. Check the CSV headers. The importer accepts a small set of common headings or a normalized file with `gilt_name,redemption_date,nominal_outstanding_millions` and optionally `isin,gilt_type`. Verify the nominal units and column mapping against the original export; D1A export variants have not yet been tested end to end.
 3. Run:
 
 ```bash
@@ -40,6 +40,8 @@ The initial D1A chart measures concentration of scheduled gross nominal redempti
 ## DMO future redemptions: dated snapshot
 
 The repository also contains a transcription of all 47 financial-year rows of the DMO [Future Redemptions (D8B) report](https://www.dmo.gov.uk/umbraco/surface/PDFReport/GetDataExport?reportCode=D8B) **dated 21 September 2026**: `data/dmo_d8b_2026-09-21.csv`. The report begins in **2027-28**; no inference is made here about 2026-27. Its totals are net of government holdings, subject to the DMO's note that holdings are updated after month-end. For index-linked gilts, the reported redemption amounts do not equal the full inflation-uplifted nominal amounts: part of the uplift enters the financing calculation elsewhere. This is a snapshot, and future issuance will change the profile. See the original DMO report for its detailed notes.
+
+See [data provenance and reuse terms](data/SOURCE.md). Contains public sector information licensed under the Open Government Licence v3.0. The repository's MIT licence covers original code; the DMO data retains its source terms.
 
 ```bash
 python d8b_analysis.py data/dmo_d8b_2026-09-21.csv --output outputs
@@ -68,5 +70,16 @@ The example compares two **hypothetical** ways to issue £100 billion of fixed-r
 The no-shock comparison charges £2.25bn more coupons over ten years for the longer example. Under the **assumed** rollover shock, it charges £3.25bn less. These simplified coupon totals are scenario accounting, not expected present-value costs or an optimal issuance recommendation. The D8B snapshot is not automatically added to the hypothetical issuance in this comparison; doing so would mix observed stock and invented yields without a defensible calibration.
 
 Next: ingest an actual DMO D1A export, reconcile its gross maturity schedule against the D8B market-hands totals, and source dated yield inputs before assessing real strategy trade-offs.
+
+## Cost–risk research workflow
+
+The [research note](reports/research_note_2026-09-21.md) connects the D8B snapshot to a grid of **286 hypothetical issuance mixes**. It compares initial coupon expense with (a) the peak combined redemption in ten years and (b) cumulative coupons over thirty years under a stated rollover shock. A full candidate grid, Pareto frontiers and two reproducible charts are generated with:
+
+```bash
+python strategy_frontier.py data/dmo_d8b_2026-09-21.csv examples/illustrative_yields.csv --output outputs/ten_year
+python strategy_frontier.py data/dmo_d8b_2026-09-21.csv examples/illustrative_yields.csv --horizon 30 --risk-metric shock_cost --output outputs/thirty_year
+```
+
+The ten-year concentration frontier has 14 grid points; the thirty-year shocked-coupon frontier has 66. The change shows why the risk measure and horizon must be stated before interpreting an issuance mix. [View ten-year chart](reports/strategy_frontier_10y.svg) · [View thirty-year chart](reports/strategy_frontier_30y.svg). GitHub Actions runs the tests and both example analyses on each push and pull request.
 
 This project is independent and has no affiliation with the DMO or HM Treasury. It is research software, not financial or policy advice.
