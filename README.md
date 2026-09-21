@@ -47,6 +47,10 @@ python d8b_analysis.py data/dmo_d8b_2026-09-21.csv --output outputs
 
 This produces a stacked chart and JSON summary. In the dated snapshot, total scheduled redemptions across the **listed years** are £2,407.274 billion. The largest listed year is 2029-30 (£165.944 billion); 30.9% of the listed total falls in its first five years. These are sums of reported figures, not an estimate of the government's total financing requirement.
 
+![Stacked chart of DMO future redemptions](reports/dmo_redemptions_2026-09-21.svg)
+
+The generated [summary](reports/dmo_redemptions_2026-09-21_summary.json) is committed so the first analysis can be inspected without running Python.
+
 ## Illustrative issuance comparison
 
 ```bash
