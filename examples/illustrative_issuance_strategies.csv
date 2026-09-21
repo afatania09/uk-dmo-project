@@ -1,0 +1,9 @@
+strategy,tenor_years,share,yield_percent
+shorter,2,0.35,4.00
+shorter,5,0.35,4.10
+shorter,10,0.20,4.30
+shorter,30,0.10,4.70
+longer,2,0.10,4.00
+longer,5,0.20,4.10
+longer,10,0.30,4.30
+longer,30,0.40,4.70
