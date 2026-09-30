@@ -5,3 +5,5 @@
 The DMO's [terms of use](https://www.dmo.gov.uk/terms-of-use/) state that, unless otherwise noted, its website information is Crown copyright and may be reused under the [Open Government Licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/). **Contains public sector information licensed under the Open Government Licence v3.0.** The repository's MIT licence applies to its original code, not as a replacement for the source data's licence.
 
 The yields in `examples/illustrative_yields.csv` and both named issuance strategies in `examples/illustrative_issuance_strategies.csv` are invented scenario inputs, not DMO data or a dated market yield series.
+
+`dmo_financing_remit_2026-27_2026-04-23.csv` transcribes Annex A of the DMO's [Revision to the Financing Remit 2026-27](https://www.dmo.gov.uk/media/ajmifgdv/pr230426_2.pdf), dated **23 April 2026**. Amounts are cash proceeds in £ billion. The source reports planned gilt sales of £246.2bn: £174.4bn at auction, approximately £42.0bn by syndication, and £29.8bn initially unallocated. The source should be checked for later in-year revisions before treating this as the current remit.
