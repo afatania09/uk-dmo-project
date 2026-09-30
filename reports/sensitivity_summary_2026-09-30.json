@@ -1,0 +1,35 @@
+{
+  "grid": {
+    "persistence": [
+      0.5,
+      0.75,
+      0.9
+    ],
+    "annual_volatility_bp": [
+      50,
+      100,
+      150
+    ],
+    "simulations_per_cell": 2000
+  },
+  "strategy_ranges": {
+    "2026-27 allocated conventional proxy": {
+      "lowest_p95_gbp_millions": 134580.663,
+      "highest_p95_gbp_millions": 208518.43,
+      "lowest_tail_width_gbp_millions": 8318.032,
+      "highest_tail_width_gbp_millions": 80443.152
+    },
+    "longer": {
+      "lowest_p95_gbp_millions": 138262.191,
+      "highest_p95_gbp_millions": 186695.346,
+      "lowest_tail_width_gbp_millions": 6411.493,
+      "highest_tail_width_gbp_millions": 53529.058
+    },
+    "shorter": {
+      "lowest_p95_gbp_millions": 133593.425,
+      "highest_p95_gbp_millions": 210173.454,
+      "lowest_tail_width_gbp_millions": 8360.502,
+      "highest_tail_width_gbp_millions": 83271.061
+    }
+  }
+}
