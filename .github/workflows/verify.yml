@@ -14,3 +14,6 @@ jobs:
       - run: python d8b_analysis.py data/dmo_d8b_2026-09-21.csv --output outputs
       - run: python strategy_frontier.py data/dmo_d8b_2026-09-21.csv examples/illustrative_yields.csv --output outputs/ten_year
       - run: python strategy_frontier.py data/dmo_d8b_2026-09-21.csv examples/illustrative_yields.csv --horizon 30 --risk-metric shock_cost --output outputs/thirty_year
+      - run: python remit_analysis.py data/dmo_financing_remit_2026-27_2026-04-23.csv --output outputs/remit
+      - run: python rate_simulation.py examples/illustrative_issuance_strategies.csv --remit-csv data/dmo_financing_remit_2026-27_2026-04-23.csv --yield-csv examples/illustrative_yields.csv --simulations 1000 --output outputs/monte_carlo
+      - run: python sensitivity_analysis.py examples/illustrative_issuance_strategies.csv --remit-csv data/dmo_financing_remit_2026-27_2026-04-23.csv --yield-csv examples/illustrative_yields.csv --simulations 500 --output outputs/sensitivity
