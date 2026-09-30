@@ -1,0 +1,6 @@
+instrument,sector,auction_gbp_bn,syndication_gbp_bn,unallocated_gbp_bn,total_gbp_bn,share_total_percent
+gilt,short_conventional,95.0,0.0,0.0,95.0,38.6
+gilt,medium_conventional_including_green,56.0,20.0,0.0,76.0,30.9
+gilt,long_conventional,7.4,15.0,0.0,22.4,9.1
+gilt,index_linked,16.0,7.0,0.0,23.0,9.3
+gilt,unallocated,0.0,0.0,29.8,29.8,12.1
