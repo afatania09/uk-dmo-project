@@ -2,6 +2,14 @@
 
 An independent, reproducible analysis of the UK gilt maturity profile. This repository starts with a narrow, auditable question: **how much nominal gilt principal is scheduled to redeem in each UK financial year?**
 
+The project now also analyses the DMO's revised **2026–27 financing remit**, enumerates hypothetical issuance frontiers, and runs reproducible rollover-rate simulations. Start with the [30 September policy brief](reports/policy_brief_2026-09-30.md).
+
+## Headline official remit figures
+
+The DMO's 23 April 2026 revision states a £251.2bn Net Financing Requirement, £246.2bn planned gilt sales and a £5.0bn net contribution from Treasury bills. The committed gilt programme comprised £95.0bn short conventional, £76.0bn medium conventional (including green), £22.4bn long conventional and £23.0bn index-linked, with £29.8bn initially unallocated. These are dated plans and should be checked against later revisions.
+
+![Composition of the revised 2026–27 financing remit](reports/remit_composition_2026-27.svg)
+
 ## Current capability
 
 `gilt_profile.py` accepts a saved CSV export of the UK Debt Management Office (DMO) **Gilts in Issue (D1A)** report, validates the key fields, and produces:
@@ -81,5 +89,21 @@ python strategy_frontier.py data/dmo_d8b_2026-09-21.csv examples/illustrative_yi
 ```
 
 The ten-year concentration frontier has 14 grid points; the thirty-year shocked-coupon frontier has 66. The change shows why the risk measure and horizon must be stated before interpreting an issuance mix. [View ten-year chart](reports/strategy_frontier_10y.svg) · [View thirty-year chart](reports/strategy_frontier_30y.svg). GitHub Actions runs the tests and both example analyses on each push and pull request.
+
+## Stochastic rollover-cost experiment
+
+`rate_simulation.py` compares named issuance mixes over common random interest-rate paths. The annual parallel yield shift follows a seeded AR(1) process; debt reprices only when its maturity bucket rolls over. The result is reproducible, but deliberately **not calibrated** to historical or market-implied probabilities.
+
+```bash
+python rate_simulation.py examples/illustrative_issuance_strategies.csv \
+  --remit-csv data/dmo_financing_remit_2026-27_2026-04-23.csv \
+  --yield-csv examples/illustrative_yields.csv --output outputs/monte_carlo
+
+python sensitivity_analysis.py examples/illustrative_issuance_strategies.csv \
+  --remit-csv data/dmo_financing_remit_2026-27_2026-04-23.csv \
+  --yield-csv examples/illustrative_yields.csv --output outputs/sensitivity
+```
+
+The second command evaluates nine combinations of persistence and volatility. The [policy brief](reports/policy_brief_2026-09-30.md) explains why the results demonstrate a cost–refinancing-risk mechanism rather than a recommended issuance strategy.
 
 This project is independent and has no affiliation with the DMO or HM Treasury. It is research software, not financial or policy advice.
