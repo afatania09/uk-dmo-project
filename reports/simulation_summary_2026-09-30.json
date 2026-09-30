@@ -1,0 +1,37 @@
+{
+  "assumptions": {
+    "simulations": 5000,
+    "seed": 20260930,
+    "financing_gbp_millions": 100000,
+    "horizon_years": 30,
+    "ar1_persistence": 0.75,
+    "long_run_parallel_shift_bp": 0,
+    "annual_parallel_shift_volatility_bp": 100,
+    "rate_floor_percent": 0,
+    "probability_calibration": "illustrative; not fitted to market or historical data",
+    "cost_measure": "undiscounted annual coupons on constant principal"
+  },
+  "strategies": {
+    "shorter": {
+      "mean_cumulative_coupon_gbp_millions": 125209.597,
+      "p05_gbp_millions": 96350.974,
+      "median_gbp_millions": 124903.78,
+      "p95_gbp_millions": 154133.973,
+      "tail_width_p95_minus_median_gbp_millions": 29230.193
+    },
+    "longer": {
+      "mean_cumulative_coupon_gbp_millions": 131859.642,
+      "p05_gbp_millions": 112031.789,
+      "median_gbp_millions": 131629.053,
+      "p95_gbp_millions": 151493.063,
+      "tail_width_p95_minus_median_gbp_millions": 19864.01
+    },
+    "2026-27 allocated conventional proxy": {
+      "mean_cumulative_coupon_gbp_millions": 126203.625,
+      "p05_gbp_millions": 97877.367,
+      "median_gbp_millions": 126011.659,
+      "p95_gbp_millions": 154354.16,
+      "tail_width_p95_minus_median_gbp_millions": 28342.501
+    }
+  }
+}
