@@ -1,0 +1,5 @@
+instrument,face_millions,coupon_percent,yield_percent,years
+Illustrative short gilt,2500,3.5,3.8,2
+Illustrative medium gilt,4500,4,4.2,7
+Illustrative long gilt,3000,4.25,4.5,20
+Illustrative ultra-long gilt,1500,4.5,4.7,30
