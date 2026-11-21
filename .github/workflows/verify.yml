@@ -21,3 +21,5 @@ jobs:
       - run: python funding_risk_dashboard.py examples/illustrative_funding_portfolio.csv --output outputs/funding_risk
 
       - run: python gilt_settlement.py --settlement 2026-11-21 --maturity 2036-09-07 --coupon-percent 4.25 --yield-percent 4.5
+
+      - run: python settlement_portfolio.py examples/illustrative_settlement_portfolio.csv --settlement 2026-11-21 --output outputs/settlement_portfolio
