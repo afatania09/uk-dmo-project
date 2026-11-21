@@ -1,0 +1,5 @@
+instrument,maturity_date,face_millions,coupon_percent,yield_percent
+Illustrative 2029 conventional,2029-09-07,2500,3.5,3.8
+Illustrative 2034 conventional,2034-09-07,4500,4.0,4.2
+Illustrative 2046 conventional,2046-09-07,3000,4.25,4.5
+Illustrative 2056 conventional,2056-09-07,1500,4.5,4.7
